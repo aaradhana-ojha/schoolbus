@@ -12,9 +12,9 @@ def default_site_config(apps, schema_editor):
     Config = apps.get_model("corecode", "SiteConfig")
     Config.objects.bulk_create(
         [
-            Config(key="school_name", value="My School"),
-            Config(key="school_slogan", value="A great school"),
-            Config(key="school_address", value="Lagos, Nigeria"),
+            Config(key="school_name", value="My Bus"),
+            Config(key="school_slogan", value="Advanced college"),
+            Config(key="school_address", value="Kalanki"),
         ]
     )
 
@@ -45,8 +45,8 @@ def default_site_config(apps, schema_editor):
     StudentClass = apps.get_model("corecode", "StudentClass")
     StudentClass.objects.bulk_create(
         [
-            StudentClass(name="JSS 1"),
-            StudentClass(name="JSS 2"),
+            StudentClass(name="1"),
+            StudentClass(name="2"),
         ]
     )
 
