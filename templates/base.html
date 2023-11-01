@@ -6,7 +6,10 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
-  <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY"></script> <!-- Map  just added --> 
+  <!-- Map  just added --> 
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+  
+ 
 
 
   <title>{{ bus | default:"MyBus" }}</title>
@@ -183,6 +186,9 @@
   <!-- ./wrapper -->
 
   <!-- REQUIRED SCRIPTS -->
+  <!-- open street map -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
   <!-- jQuery -->
   <script src="{% static 'plugins/jquery/jquery.min.js' %}"></script>
   <script src="{% static 'dist/js/jquery.formset.js' %}"> </script>
@@ -221,6 +227,26 @@
   </script>
 
   {% block morejs %}
+  <script>
+    // Function to initialize and display the map
+    function initMap() {
+      var map = L.map('map').setView([37.7749, -122.4194], 12); // Replace with your desired coordinates and zoom level
+
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 19,
+      }).addTo(map);
+
+      // You can add markers or other map elements as needed
+      var marker = L.marker([27.7172, 85.3240]).addTo(map);
+      marker.bindPopup("Student Location"); // Replace with an appropriate title
+    }
+  </script>
+
+  <script>
+    // Call the initMap function when the page is loaded
+    initMap();
+  </script>
+
 
   {% endblock morejs %}
 
