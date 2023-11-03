@@ -230,7 +230,7 @@
   <script>
     // Function to initialize and display the map
     function initMap() {
-      var map = L.map('map').setView([37.7749, -122.4194], 12); // Replace with your desired coordinates and zoom level
+      var map = L.map('map').setView([27.7172, 85.3240], 12); // Set the coordinates for Kathmandu and the desired zoom level
 
       L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         maxZoom: 19,
@@ -240,12 +240,12 @@
       var marker = L.marker([27.7172, 85.3240]).addTo(map);
       marker.bindPopup("Student Location"); // Replace with an appropriate title
     }
-  </script>
+</script>
 
-  <script>
+<script>
     // Call the initMap function when the page is loaded
     initMap();
-  </script>
+</script>
 
 
   {% endblock morejs %}
