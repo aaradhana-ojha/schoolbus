@@ -72,6 +72,14 @@
               {{ object.others }}
             </div>
           </div>
+          <div>
+            <label for="my_dropdown">Select an staff:</label>
+            <select id="my_dropdown" name="selected_option">
+            {% for staff in staffs %}
+              <option value="{{ staff }}">{{ staff }}</option>
+            {% endfor %}
+            </select>
+          </div>
           <!-- Your existing content here -->
           <div id="map" style="height: 300px;"></div>
         </div>

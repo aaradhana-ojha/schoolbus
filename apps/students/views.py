@@ -9,6 +9,7 @@ from django.views.generic import DetailView, ListView, View
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
 
 from apps.finance.models import Invoice
+from apps.staffs.models import Staff
 
 from .models import Student, StudentBulkUpload
 
@@ -25,6 +26,7 @@ class StudentDetailView(LoginRequiredMixin, DetailView):
     def get_context_data(self, **kwargs):
         context = super(StudentDetailView, self).get_context_data(**kwargs)
         context["payments"] = Invoice.objects.filter(student=self.object)
+        context["staffs"] =  [f"{staff.firstname} {staff.surname}" for staff in Staff.objects.all()]
         return context
 
 

@@ -6,6 +6,7 @@ from django.shortcuts import HttpResponseRedirect, redirect, render
 from django.urls import reverse_lazy
 from django.views.generic import ListView, TemplateView, View
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
+import pyrebase
 
 from .forms import (
     AcademicSessionForm,
