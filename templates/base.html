@@ -6,12 +6,6 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
-  <!-- Map  just added --> 
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" /> 
-
- 
-
-
   <title>{{ bus | default:"MyBus" }}</title>
 
   <!-- Font Awesome Icons -->
@@ -27,6 +21,9 @@
   <link
     href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700"
     rel="stylesheet">
+  <!-- Google Maps API -->
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDB0Pg_eDE7RmNWEFIJwztf6IL2FAPppic&v=weekly"></script>
+
 </head>
 
 <body
@@ -186,10 +183,7 @@
   <!-- ./wrapper -->
 
   <!-- REQUIRED SCRIPTS -->
-  <!-- open street map -->
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
-  <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
-  <!-- jQuery -->
+   <!-- jQuery -->
   <script src="{% static 'plugins/jquery/jquery.min.js' %}"></script>
   <script src="{% static 'dist/js/jquery.formset.js' %}"> </script>
   <!-- Bootstrap -->
@@ -226,29 +220,27 @@
 
   </script>
 
-  {% block morejs %}
+  <!-- Google Maps Initialization Script -->
   <script>
-    // Function to initialize and display the map
     function initMap() {
-      var map = L.map('map').setView([27.7172, 85.3240], 12); // Set the coordinates for Kathmandu and the desired zoom level
+      var map = new google.maps.Map(document.getElementById('map'), {
+        center: { lat: 27.7172, lng: 85.3240 },
+        zoom: 12
+      });
 
-      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        maxZoom: 19,
-      }).addTo(map);
-
-      // You can add markers or other map elements as needed
-      var marker = L.marker([27.7172, 85.3240]).addTo(map);
-      marker.bindPopup("Student Location"); // we can replace with an appropriate title
+      var marker = new google.maps.Marker({
+        position: { lat: 27.7172, lng: 85.3240 },
+        map: map,
+        title: 'Student Location'
+      });
     }
-</script>
+  </script>
 
-<script>
-    // Call the initMap function when the page is loaded
-    initMap();
-</script>
+  <script>
+    initMap(); // Call the initMap function when the page is loaded
+  </script>
 
 
-  {% endblock morejs %}
 
 
 
